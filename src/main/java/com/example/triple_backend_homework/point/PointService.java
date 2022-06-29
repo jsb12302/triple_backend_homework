@@ -39,6 +39,26 @@ public class PointService {
     }
 
     /**
+     * 포인트 감소 기능
+     * @param requestDTO
+     * @return
+     */
+    public int decrementPoint(RequestDTO requestDTO){
+        Account findAccountByUserId = accountRepository.findByUserId(requestDTO.getUserId());
+        Point findPointByAccount = pointRepository.findByAccount(findAccountByUserId);
+
+        int originPoint = findPointByAccount.getPoint();
+        int contentPoint = getContentPoint(requestDTO);
+        int bonusPoint = getBonusPoint(requestDTO);
+
+        int decrementPoint=contentPoint + bonusPoint;
+
+        findPointByAccount.setPoint(originPoint - contentPoint - bonusPoint);
+        pointRepository.save(findPointByAccount);
+        return decrementPoint;
+    }
+
+    /**
      * 내용 점수 기능
      * @param requestDTO
      * @return 내용 점수

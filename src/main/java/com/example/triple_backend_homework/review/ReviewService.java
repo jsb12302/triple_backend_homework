@@ -79,6 +79,24 @@ public class ReviewService {
     }
 
     /**
+     * 리뷰 삭제 기능
+     * @param requestDTO
+     * @return
+     */
+    public boolean reviewDelete(RequestDTO requestDTO){
+        if(hasReview(requestDTO)){
+            Review byPlaceId = reviewRepository.findByReviewId(requestDTO.getReviewId());
+            int decrementPoints = pointService.decrementPoint(requestDTO);
+            pointHistoryService.generatePointHistory(requestDTO,decrementPoints,"DELETE","MINUS");
+            reviewRepository.delete(byPlaceId);
+            reviewHistoryService.deleteReviewHistory(requestDTO);
+            return true;
+        }
+        return false;
+
+    }
+
+    /**
      * 사용자 리뷰 존재 여부 판단 기능
      * @param requestDTO
      * @return
