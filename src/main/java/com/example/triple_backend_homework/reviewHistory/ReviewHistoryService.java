@@ -32,6 +32,23 @@ public class ReviewHistoryService {
         reviewHistoryRepository.save(reviewHistory);
     }
 
+    /**
+     * 리뷰 이력 수정 기능
+     * @param requestDTO
+     */
+    public void updateReviewHistory(RequestDTO requestDTO){
+        ReviewHistory byReview = reviewHistoryRepository.findByReviewId(requestDTO.getReviewId());
+
+        int content = hasContent(requestDTO);
+        int picture = hasPicture(requestDTO);
+        int firstPost = hasFirstPost(requestDTO);
+
+        byReview.setContent(content);
+        byReview.setPicture(picture);
+        byReview.setFirstPost(firstPost);
+
+        reviewHistoryRepository.save(byReview);
+    }
 
 
     /**
