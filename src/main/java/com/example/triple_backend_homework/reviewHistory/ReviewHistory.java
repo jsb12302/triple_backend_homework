@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(indexes = @Index(name = "i_reviewHistory", columnList = "id"))
+@Table(indexes = @Index(name = "i_reviewId", columnList = "REVIEW_ID"))
 public class ReviewHistory {
 
     @Id @GeneratedValue
     private Long id;
 
+    @Column(name = "REVIEW_ID")
     private String reviewId;
 
     private int content;
