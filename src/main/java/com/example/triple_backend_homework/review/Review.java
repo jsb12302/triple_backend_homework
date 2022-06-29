@@ -9,13 +9,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(indexes = @Index(name = "i_review", columnList = "REVIEW_ID"))
+@Table(indexes = @Index(name = "i_placeId", columnList = "PLACE_ID"))
 public class Review {
 
     @Id
@@ -27,7 +28,9 @@ public class Review {
     @OnDelete(action = OnDeleteAction.CASCADE)
     Account account;
 
+    @Column(name = "PLACE_ID")
     private String placeId;
     private String content;
+    private LocalDateTime createTime;
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(indexes = @Index(name = "i_point", columnList = "id"))
+@Table(indexes = @Index(name = "i_account", columnList = "ACCOUNT_ID"))
 public class Point {
 
     @Id @GeneratedValue

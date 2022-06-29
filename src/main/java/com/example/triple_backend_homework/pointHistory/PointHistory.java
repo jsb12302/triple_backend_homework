@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(indexes = @Index(name = "i_pointHistory", columnList = "id"))
 public class PointHistory {
 
     @Id @GeneratedValue
