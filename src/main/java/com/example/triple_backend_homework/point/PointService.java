@@ -76,4 +76,22 @@ public class PointService {
         return point;
     }
 
+    /**
+     * 포인트 적립 갱신 기
+     * @param account
+     * @param mode
+     * @param amount
+     */
+    public void updatePoint(Account account,String mode, int amount){
+        Point byAccount = pointRepository.findByAccount(account);
+        int originPoint=byAccount.getPoint();
+        if(mode.equals("PLUS")){
+            byAccount.setPoint(originPoint + amount);
+        }
+        else if(mode.equals("MINUS")){
+            byAccount.setPoint(originPoint - amount);
+        }
+        pointRepository.save(byAccount);
+    }
+
 }

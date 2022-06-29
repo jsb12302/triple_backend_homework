@@ -25,7 +25,14 @@ public class ReviewController {
                 return new ResponseEntity("이미 같은 장소를 리뷰했습니다.", HttpStatus.BAD_REQUEST);
             }
         }
-        return null;
+        if(requestDTO.getAction().equals("MOD")){
+            if(reviewService.reviewMod(requestDTO)){
+                return new ResponseEntity("리뷰가 수정 되었습니다.", HttpStatus.OK);
+            }else{
+                return new ResponseEntity("수정할 리뷰가 없습니다.", HttpStatus.BAD_REQUEST);
+            }
+        }
+        return new ResponseEntity("올바르지 않은 요청입니다..", HttpStatus.BAD_REQUEST);
     }
 
 }
