@@ -50,6 +50,14 @@ public class ReviewHistoryService {
         reviewHistoryRepository.save(byReview);
     }
 
+    /**
+     * 리뷰 지운 후 리뷰 이력 지우는 기능
+     * @param requestDTO
+     */
+    public void deleteReviewHistory(RequestDTO requestDTO){
+        ReviewHistory byReviewId = reviewHistoryRepository.findByReviewId(requestDTO.getReviewId());
+        reviewHistoryRepository.delete(byReviewId);
+    }
 
     /**
      * 글자수 1글자 이상 판단 기능
