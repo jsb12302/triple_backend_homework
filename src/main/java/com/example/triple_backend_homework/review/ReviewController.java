@@ -16,8 +16,6 @@ public class ReviewController {
 
     @PostMapping("/events")
     public ResponseEntity events(@RequestBody RequestDTO requestDTO){
-        System.out.println("---------------------");
-        System.out.println(requestDTO.toString());
         if(requestDTO.getAction().equals("ADD")){
             if(reviewService.reviewAdd(requestDTO)){
                 return new ResponseEntity("리뷰가 작성 되었습니다.", HttpStatus.OK);
