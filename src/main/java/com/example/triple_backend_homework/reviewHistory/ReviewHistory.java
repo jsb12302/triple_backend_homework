@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(indexes = @Index(name = "i_reviewId", columnList = "REVIEW_ID"))
 public class ReviewHistory {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "REVIEW_ID")

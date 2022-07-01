@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PointHistory {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "ACCOUNT_ID")
     private Account account; //사용자 아이디
 
