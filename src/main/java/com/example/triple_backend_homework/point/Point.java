@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(indexes = @Index(name = "i_account", columnList = "ACCOUNT_ID"))
 public class Point {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
