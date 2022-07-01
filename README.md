@@ -2,7 +2,7 @@
 ![triple-erd drawio](https://user-images.githubusercontent.com/73890228/176977482-1f86c277-d6c7-4c81-86b3-55695c4ad872.png)
 
 ## DDL
-'''
+```
 create table account (
                          account_id varchar(255) not null,
                          primary key (account_id)
@@ -64,4 +64,4 @@ create table review_history (
                                 primary key (id)
 );
 create index i_reviewId on review_history (review_id);
-'''
+```
