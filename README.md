@@ -83,6 +83,6 @@ create index i_reviewId on review_history (review_id);
 ```
 ## 실행방법
 1. ./gradlew bootJar
-2. ./gradlew bootRun -Pargs=--userName='DB 유저네임',--password='DB 비밀번호'
+2. ./gradlew bootRun -Pargs=--userName='DB 유저네임',--password='DB 비밀번호' 
 Ex) ./gradlew bootRun -Pargs=--userName=root,--password=1234
 
